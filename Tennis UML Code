@@ -1,0 +1,79 @@
+classDiagram
+    direction TB
+    
+    class Person {
+        +String fullName
+        +int yearsOld
+        # String country
+        +Person(String fullName, int yearsOld)
+        +Person()
+        +void showDetails()
+    }
+
+    class TennisPlayer {
+        - int rankSpot
+        + TennisPlayer(String fullName, int yearsOld, int rankSpot)
+        + TennisPlayer()
+        + void playGame()
+        + void checkRank()
+    }
+
+    class Coach {
+        - String gamePlan
+        + Coach(String fullName, int yearsOld, String gamePlan)
+        + Coach()
+        + void trainAthlete()
+    }
+
+    class Referee {
+        - int yearsExperience
+        + Referee(String fullName, int yearsOld, int yearsExperience)
+        + Referee()
+        + void refGame()
+    }
+
+    class Tournament {
+        + String tourneyName
+        # int cashPrize
+        + Tournament(String tourneyName, int cashPrize)
+        + Tournament()
+        + void kickOff()
+    }
+
+    class GrandSlamTournament {
+        + GrandSlamTournament(String tourneyName, int cashPrize)
+        + void kickOff()
+    }
+
+    class CincinnatiOpenTournament {
+        + CincinnatiOpenTournament(String tourneyName, int cashPrize)
+        + void kickOff()
+    }
+
+    class TennisRankings {
+        - List~TennisPlayer~ rankedPlayers
+        + TennisRankings()
+        + void refreshRankings()
+    }
+
+    class Match {
+        + TennisPlayer playerA
+        + TennisPlayer playerB
+        + Match(TennisPlayer pA, TennisPlayer pB)
+        + void beginMatch()
+    }
+
+    class Helper {
+        static void printTourneyDetails(Tournament t)
+    }
+
+    Person <|-- TennisPlayer
+    Person <|-- Coach
+    Person <|-- Referee
+    Tournament <|-- GrandSlamTournament
+    Tournament <|-- CincinnatiOpenTournament
+    TennisPlayer --> "implements" Rankable
+    TennisPlayer --> "implements" Playable
+    Match --> TennisPlayer
+    TennisRankings --> "manages" TennisPlayer
+    Helper --> Tournament
