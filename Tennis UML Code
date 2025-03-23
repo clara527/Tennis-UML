@@ -1,6 +1,5 @@
 classDiagram
     direction TB
-    
     class Person {
         +String fullName
         +int yearsOld
@@ -45,11 +44,6 @@ classDiagram
         + void kickOff()
     }
 
-    class CincinnatiOpenTournament {
-        + CincinnatiOpenTournament(String tourneyName, int cashPrize)
-        + void kickOff()
-    }
-
     class TennisRankings {
         - List~TennisPlayer~ rankedPlayers
         + TennisRankings()
@@ -71,7 +65,7 @@ classDiagram
     Person <|-- Coach
     Person <|-- Referee
     Tournament <|-- GrandSlamTournament
-    Tournament <|-- CincinnatiOpenTournament
+    
     TennisPlayer --> "implements" Rankable
     TennisPlayer --> "implements" Playable
     Match --> TennisPlayer
